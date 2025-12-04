@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}Actualizar Artículo{% endblock %}
+{% block content %}
+<h2>Actualizar Artículo</h2>
+<form method="post">{% csrf_token %}
+  <input type="text" class="form-control mb-2" name="tipo_prenda" value="{{ art.tipo_prenda }}">
+  <input type="text" class="form-control mb-2" name="color" value="{{ art.color }}">
+  <input type="text" class="form-control mb-2" name="material" value="{{ art.material }}">
+  <input type="text" class="form-control mb-2" name="tamano" value="{{ art.tamano }}">
+  <input type="number" step="0.01" class="form-control mb-2" name="costo_lavado_estandar" value="{{ art.costo_lavado_estandar }}">
+  <input type="text" class="form-control mb-2" name="estado_articulo" value="{{ art.estado_articulo }}">
+  <select name="cliente" class="form-select mb-2">
+    <option value="">-- Ninguno --</option>
+    {% for c in clientes %}<option value="{{ c.id_cliente }}" {% if art.cliente_id == c.id_cliente %}selected{% endif %}>{{ c.nombre }} {{ c.apellido }}</option>{% endfor %}
+  </select>
+  <button class="btn btn-success">Guardar</button>
+  <a class="btn btn-secondary" href="{% url 'app_lavanderia:ver_articulos' %}">Cancelar</a>
+</form>
+{% endblock %}

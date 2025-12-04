@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Listado de Clientes</h2>
+
+    <a href="{% url 'app_lavanderia:agregar_cliente' %}" class="btn btn-primary mb-3">
+        Agregar Cliente
+    </a>
+
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Teléfono</th>
+                <th>Email</th>
+                <th>Dirección de Recogida</th>
+                <th>Dirección de Entrega</th>
+                <th>Notas</th>
+                <th>Preferencias</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cliente in clientes %}
+            <tr>
+                <td>{{ cliente.id_cliente }}</td>
+                <td>{{ cliente.nombre }}</td>
+                <td>{{ cliente.apellido }}</td>
+                <td>{{ cliente.telefono }}</td>
+                <td>{{ cliente.email }}</td>
+                <td>{{ cliente.direccion_recogida }}</td>
+                <td>{{ cliente.direccion_entrega }}</td>
+                <td>{{ cliente.notas_cliente }}</td>
+                <td>{{ cliente.preferencias_lavado }}</td>
+                <td>
+                    <a href="{% url 'app_lavanderia:actualizar_cliente' cliente.id_cliente %}" class="btn btn-warning btn-sm">Editar</a>
+                    <a href="{% url 'app_lavanderia:borrar_cliente' cliente.id_cliente %}" class="btn btn-danger btn-sm">Eliminar</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="10" class="text-center">No hay clientes registrados.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

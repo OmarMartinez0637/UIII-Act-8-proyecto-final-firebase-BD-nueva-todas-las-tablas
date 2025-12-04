@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Listado de Máquinas</h2>
+
+    <a href="{% url 'app_lavanderia:agregar_maquina' %}" class="btn btn-primary mb-3">
+        Agregar Máquina
+    </a>
+
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Tipo</th>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Capacidad (kg)</th>
+                <th>Estado Operativo</th>
+                <th>Última Revisión</th>
+                <th>Número de Serie</th>
+                <th>Es Lavadora</th>
+                <th>Es Secadora</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for maquina in maquinas %}
+            <tr>
+                <td>{{ maquina.id_maquina }}</td>
+                <td>{{ maquina.tipo_maquina }}</td>
+                <td>{{ maquina.marca }}</td>
+                <td>{{ maquina.modelo }}</td>
+                <td>{{ maquina.capacidad_kg }}</td>
+                <td>{{ maquina.estado_operativo }}</td>
+                <td>{{ maquina.ultima_revision|date:"d/m/Y" }}</td>
+                <td>{{ maquina.num_serie }}</td>
+                <td>{% if maquina.es_lavadora %}Sí{% else %}No{% endif %}</td>
+                <td>{% if maquina.es_secadora %}Sí{% else %}No{% endif %}</td>
+                <td>
+                    <a href="{% url 'app_lavanderia:actualizar_maquina' maquina.id_maquina %}" 
+                       class="btn btn-warning btn-sm">Editar</a>
+                    <a href="{% url 'app_lavanderia:borrar_maquina' maquina.id_maquina %}" 
+                       class="btn btn-danger btn-sm">Eliminar</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="11" class="text-center">No hay máquinas registradas.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

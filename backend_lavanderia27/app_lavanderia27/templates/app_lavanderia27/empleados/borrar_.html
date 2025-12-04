@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Eliminar Empleado</h2>
+
+    <p>¿Seguro que deseas eliminar al empleado <strong>{{ emp.nombre }} {{ emp.apellido }}</strong>?</p>
+
+    <form method="POST">
+        {% csrf_token %}
+        <button class="btn btn-danger" type="submit">Eliminar</button>
+        <a href="{% url 'app_lavanderia:ver_empleados' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Actualizar Cliente</h2>
+<form method="POST">{% csrf_token %}
+<label>Nombre:</label><input value="{{ cliente.nombre }}" type="text" name="nombre" class="form-control">
+<label>Apellido:</label><input value="{{ cliente.apellido }}" type="text" name="apellido" class="form-control">
+<label>Teléfono:</label><input value="{{ cliente.telefono }}" type="text" name="telefono" class="form-control">
+<label>Email:</label><input value="{{ cliente.email }}" type="email" name="email" class="form-control">
+<label>Dirección de Recogida:</label><input value="{{ cliente.direccion_recogida }}" type="text" name="direccion_recogida" class="form-control">
+<label>Dirección de Entrega:</label><input value="{{ cliente.direccion_entrega }}" type="text" name="direccion_entrega" class="form-control">
+<label>Notas:</label><textarea name="notas_cliente" class="form-control">{{ cliente.notas_cliente }}</textarea>
+<label>Preferencias:</label><textarea name="preferencias_lavado" class="form-control">{{ cliente.preferencias_lavado }}</textarea>
+
+
+<button class="btn btn-success mt-3">Actualizar</button>
+</form>
+{% endblock %}

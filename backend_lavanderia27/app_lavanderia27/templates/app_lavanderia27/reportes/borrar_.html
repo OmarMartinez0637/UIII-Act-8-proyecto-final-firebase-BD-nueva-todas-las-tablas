@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}Borrar Reporte{% endblock %}
+{% block content %}
+<h2>Eliminar Reporte #{{ rep.id }}</h2>
+<p>¿Seguro que deseas eliminar el reporte del {{ rep.fecha_reporte }} (Empleado: {{ rep.empleado }})?</p>
+<form method="post">
+  {% csrf_token %}
+  <button class="btn btn-danger">Sí, eliminar</button>
+  <a class="btn btn-secondary" href="{% url 'app_lavanderia:ver_reportes' %}">Cancelar</a>
+</form>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Eliminar Máquina</h2>
+
+    <p>¿Seguro que deseas eliminar la máquina <strong>{{ maq.tipo_maquina }} {{ maq.marca }} {{ maq.modelo }}</strong>?</p>
+
+    <form method="POST">
+        {% csrf_token %}
+        <button class="btn btn-danger" type="submit">Eliminar</button>
+        <a href="{% url 'app_lavanderia:ver_maquinas' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

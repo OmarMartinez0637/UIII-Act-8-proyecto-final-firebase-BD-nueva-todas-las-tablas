@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Agregar Empleado</h2>
+    <form method="POST">
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <label>Nombre</label>
+            <input type="text" name="nombre" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label>Apellido</label>
+            <input type="text" name="apellido" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label>Cargo</label>
+            <input type="text" name="cargo" class="form-control">
+        </div>
+
+        <div class="mb-3">
+            <label>Fecha de Contratación</label>
+            <input type="date" name="fecha_contratacion" class="form-control">
+        </div>
+
+        <div class="mb-3">
+            <label>Salario</label>
+            <input type="number" name="salario" class="form-control">
+        </div>
+
+        <div class="mb-3">
+            <label>Turno</label>
+            <input type="text" name="turno" class="form-control">
+        </div>
+
+        <div class="mb-3">
+            <label>Teléfono</label>
+            <input type="text" name="telefono" class="form-control">
+        </div>
+
+        <div class="mb-3">
+            <label>Email</label>
+            <input type="email" name="email" class="form-control">
+        </div>
+
+        <div class="mb-3">
+            <label>DNI</label>
+            <input type="text" name="dni" class="form-control">
+        </div>
+
+        <button type="submit" class="btn btn-success">Guardar</button>
+        <a href="{% url 'app_lavanderia:ver_empleados' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

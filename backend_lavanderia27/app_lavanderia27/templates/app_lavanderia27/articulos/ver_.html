@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title %}Artículos{% endblock %}
+
+{% block content %}
+<h2>Artículos</h2>
+<a class="btn btn-success mb-3" href="{% url 'app_lavanderia:agregar_articulo' %}">Agregar Artículo</a>
+
+<table class="table table-striped table-bordered">
+  <thead class="table-dark">
+    <tr>
+      <th>#</th>
+      <th>Prenda</th>
+      <th>Color</th>
+      <th>Material</th>
+      <th>Tamaño</th>
+      <th>Costo Lavado</th>
+      <th>Delicado</th>
+      <th>Cliente</th>
+      <th>Estado</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {% for a in articulos %}
+    <tr>
+      <td>{{ a.id_articulo }}</td>
+      <td>{{ a.tipo_prenda }}</td>
+      <td>{{ a.color }}</td>
+      <td>{{ a.material }}</td>
+      <td>{{ a.tamano }}</td>
+      <td>${{ a.costo_lavado_estandar }}</td>
+      <td>{% if a.es_delicado %}Sí{% else %}No{% endif %}</td>
+      <td>{% if a.cliente %}{{ a.cliente.nombre }} {{ a.cliente.apellido }}{% else %}-{% endif %}</td>
+      <td>{{ a.estado_articulo }}</td>
+      <td>
+        <a class="btn btn-sm btn-primary" href="{% url 'app_lavanderia:actualizar_articulo' a.id_articulo %}">Editar</a>
+        <a class="btn btn-sm btn-danger" href="{% url 'app_lavanderia:borrar_articulo' a.id_articulo %}">Borrar</a>
+      </td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="10" class="text-center">No hay artículos.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

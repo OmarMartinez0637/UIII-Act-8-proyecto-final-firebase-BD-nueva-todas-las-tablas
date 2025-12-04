@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Detalles</title>
+</head>
+<body>
+<h1>Lista de Detalles</h1>
+<a href="{% url 'detalle-add' %}">Agregar Detalle</a>
+<ul>
+{% for d in detalles %}
+<li>
+Pedido ID: {{ d.id_pedido }} — Producto: {{ d.id_producto }} — Cantidad: {{ d.cantidad }}
+<a href="{% url 'detalle-update' d.id_detalle %}">Actualizar</a>
+<a href="{% url 'detalle-delete' d.id_detalle %}">Eliminar</a>
+</li>
+{% endfor %}
+</ul>
+</body>
+</html>

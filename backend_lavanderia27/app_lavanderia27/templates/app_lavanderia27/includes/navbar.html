@@ -1,0 +1,78 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'app_lavanderia:inicio' %}">Sistema de Administración Lavandería</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbars" aria-controls="navbars" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbars">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="{% url 'app_lavanderia:inicio' %}">Inicio</a></li>
+  
+          <!-- Articulo_Ropa -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Artículo_Ropa</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{% url 'app_lavanderia:agregar_articulo' %}">Agregar Articulo</a></li>
+              <li><a class="dropdown-item" href="{% url 'app_lavanderia:ver_articulos' %}">Ver Articulos</a></li>
+            </ul>
+          </li>
+  
+          <!-- Cliente -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Cliente_Lavanderia</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{% url 'app_lavanderia:agregar_cliente' %}">Agregar Cliente</a></li>
+              <li><a class="dropdown-item" href="{% url 'app_lavanderia:ver_clientes' %}">Ver Clientes</a></li>
+            </ul>
+          </li>
+  
+          <!-- Pedido -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Pedido_Lavanderia</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{% url 'app_lavanderia:agregar_pedido' %}">Agregar Pedido</a></li>
+              <li><a class="dropdown-item" href="{% url 'app_lavanderia:ver_pedidos' %}">Ver Pedidos</a></li>
+            </ul>
+          </li>
+  
+          <!-- Detalle -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Detalle_Pedido</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{% url 'app_lavanderia:agregar_detalle' %}">Agregar Detalle</a></li>
+              <li><a class="dropdown-item" href="{% url 'app_lavanderia:ver_detalles' %}">Ver Detalles</a></li>
+            </ul>
+          </li>
+  
+          <!-- Empleado -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Empleado_Lavanderia</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{% url 'app_lavanderia:agregar_empleado' %}">Agregar Empleado</a></li>
+              <li><a class="dropdown-item" href="{% url 'app_lavanderia:ver_empleados' %}">Ver Empleados</a></li>
+            </ul>
+          </li>
+  
+          <!-- Maquina -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Maquina_Lavanderia</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{% url 'app_lavanderia:agregar_maquina' %}">Agregar Maquina</a></li>
+              <li><a class="dropdown-item" href="{% url 'app_lavanderia:ver_maquinas' %}">Ver Maquinas</a></li>
+            </ul>
+          </li>
+  
+          <!-- Reporte -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Reporte_Operacional</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{% url 'app_lavanderia:agregar_reporte' %}">Agregar Reporte</a></li>
+              <li><a class="dropdown-item" href="{% url 'app_lavanderia:ver_reportes' %}">Ver Reportes</a></li>
+            </ul>
+          </li>
+  
+        </ul>
+      </div>
+    </div>
+  </nav>
+  

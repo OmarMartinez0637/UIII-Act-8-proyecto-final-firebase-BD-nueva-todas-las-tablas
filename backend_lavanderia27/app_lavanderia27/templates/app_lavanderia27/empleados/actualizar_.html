@@ -1,0 +1,60 @@
+{% extends "base.html" %} 
+{% load static %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Actualizar Empleado</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <label>Nombre</label>
+            <input type="text" name="nombre" class="form-control" value="{{ emp.nombre }}" required>
+        </div>
+
+        <div class="mb-3">
+            <label>Apellido</label>
+            <input type="text" name="apellido" class="form-control" value="{{ emp.apellido }}" required>
+        </div>
+
+        <div class="mb-3">
+            <label>Cargo</label>
+            <input type="text" name="cargo" class="form-control" value="{{ emp.cargo }}">
+        </div>
+
+        <div class="mb-3">
+            <label>Fecha de Contratación</label>
+            <input type="date" name="fecha_contratacion" class="form-control" value="{{ emp.fecha_contratacion|date:'Y-m-d' }}">
+        </div>
+
+        <div class="mb-3">
+            <label>Salario</label>
+            <input type="number" name="salario" class="form-control" value="{{ emp.salario }}">
+        </div>
+
+        <div class="mb-3">
+            <label>Turno</label>
+            <input type="text" name="turno" class="form-control" value="{{ emp.turno }}">
+        </div>
+
+        <div class="mb-3">
+            <label>Teléfono</label>
+            <input type="text" name="telefono" class="form-control" value="{{ emp.telefono }}">
+        </div>
+
+        <div class="mb-3">
+            <label>Email</label>
+            <input type="email" name="email" class="form-control" value="{{ emp.email }}">
+        </div>
+
+        <div class="mb-3">
+            <label>DNI</label>
+            <input type="text" name="dni" class="form-control" value="{{ emp.dni }}">
+        </div>
+
+        <button type="submit" class="btn btn-success">Actualizar</button>
+        <a href="{% url 'app_lavanderia:ver_empleados' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

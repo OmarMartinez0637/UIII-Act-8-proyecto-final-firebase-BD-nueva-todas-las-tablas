@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Actualizar Pedido</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <label>Cliente</label>
+            <select name="cliente" class="form-control" required>
+                <option value="">Seleccione un cliente</option>
+                {% for cliente in clientes %}
+                    <option value="{{ cliente.id_cliente }}"
+                        {% if pedido.cliente and pedido.cliente.id == cliente.id_cliente %}selected{% endif %}>
+                        {{ cliente.nombre }} {{ cliente.apellido }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label>Empleado Recepción</label>
+            <select name="empleado_recepcion" class="form-control">
+                <option value="">Ninguno</option>
+                {% for empleado in empleados %}
+                    <option value="{{ empleado.id_empleado }}"
+                        {% if pedido.empleado_recepcion and pedido.empleado_recepcion.id == empleado.id_empleado %}selected{% endif %}>
+                        {{ empleado.nombre }} {{ empleado.apellido }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label>Fecha Estimada de Entrega</label>
+            <input type="date" name="fecha_entrega_estimada" class="form-control"
+                value="{{ pedido.fecha_entrega_estimada|date:'Y-m-d' }}">
+        </div>
+
+        <div class="mb-3">
+            <label>Estado del Pedido</label>
+            <input type="text" name="estado_pedido" class="form-control" value="{{ pedido.estado_pedido }}">
+        </div>
+
+        <div class="mb-3">
+            <label>Total</label>
+            <input type="number" step="0.01" name="total_pedido" class="form-control" value="{{ pedido.total_pedido }}">
+        </div>
+
+        <div class="mb-3">
+            <label>Método de Pago</label>
+            <input type="text" name="metodo_pago" class="form-control" value="{{ pedido.metodo_pago }}">
+        </div>
+
+        <div class="mb-3">
+            <label>Comentarios del Cliente</label>
+            <textarea name="comentarios_cliente" class="form-control">{{ pedido.comentarios_cliente }}</textarea>
+        </div>
+
+        <button type="submit" class="btn btn-success">Actualizar</button>
+        <a href="{% url 'app_lavanderia:ver_pedidos' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

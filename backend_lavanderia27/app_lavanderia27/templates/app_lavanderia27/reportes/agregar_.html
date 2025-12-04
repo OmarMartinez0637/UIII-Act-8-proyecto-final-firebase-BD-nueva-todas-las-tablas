@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Agregar Reporte Operacional</h2>
+
+    {% if error %}
+    <div class="alert alert-danger">{{ error }}</div>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <label for="empleado" class="form-label">Empleado</label>
+            <select id="empleado" name="empleado" class="form-control" required>
+                <option value="">Seleccione un empleado</option>
+                {% for emp in empleados %}
+                    <option value="{{ emp.id_empleado }}">
+                        {{ emp.nombre }} {{ emp.apellido }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="num_pedidos_procesados" class="form-label"># Pedidos Procesados</label>
+            <input type="number" id="num_pedidos_procesados" name="num_pedidos_procesados" class="form-control" value="0" min="0">
+        </div>
+
+        <div class="mb-3">
+            <label for="kg_ropa_procesada" class="form-label">Kg Ropa Procesada</label>
+            <input type="number" id="kg_ropa_procesada" name="kg_ropa_procesada" class="form-control" value="0" min="0">
+        </div>
+
+        <div class="mb-3">
+            <label for="tiempo_inactividad_maquinas" class="form-label">Tiempo Inactividad (min)</label>
+            <input type="number" step="0.01" id="tiempo_inactividad_maquinas" name="tiempo_inactividad_maquinas" class="form-control" value="0">
+        </div>
+
+        <div class="mb-3">
+            <label for="consumo_agua_litros" class="form-label">Consumo Agua (L)</label>
+            <input type="number" step="0.01" id="consumo_agua_litros" name="consumo_agua_litros" class="form-control" value="0">
+        </div>
+
+        <div class="mb-3">
+            <label for="observaciones_turno" class="form-label">Observaciones del Turno</label>
+            <textarea id="observaciones_turno" name="observaciones_turno" class="form-control" rows="3"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-success">Guardar</button>
+        <a href="{% url 'app_lavanderia:ver_reportes' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

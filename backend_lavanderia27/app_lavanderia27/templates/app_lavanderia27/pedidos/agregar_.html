@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Agregar Pedido</h2>
+<form method="POST">{% csrf_token %}
+    <label>Cliente:</label>
+    <select name="id_cliente" class="form-control" required>
+        <option value="">-- Selecciona un cliente --</option>
+        {% for cliente in clientes %}
+        <option value="{{ cliente.id_cliente }}">{{ cliente.nombre }} {{ cliente.apellido }}</option>
+        {% endfor %}
+    </select>
+
+    <label>Fecha Estimada de Entrega:</label>
+    <input type="date" name="fecha_entrega_estimada" class="form-control">
+
+    <label>Estado del Pedido:</label>
+    <input type="text" name="estado_pedido" class="form-control">
+
+    <label>Total:</label>
+    <input type="number" step="0.01" name="total_pedido" class="form-control">
+
+    <label>Método de Pago:</label>
+    <input type="text" name="metodo_pago" class="form-control">
+
+    <label>Empleado Recepción:</label>
+    <select name="id_empleado_recepcion" class="form-control">
+        <option value="">-- Selecciona un empleado --</option>
+        {% for empleado in empleados %}
+        <option value="{{ empleado.id_empleado }}">{{ empleado.nombre }} {{ empleado.apellido }}</option>
+        {% endfor %}
+    </select>
+
+    <label>Comentarios del Cliente:</label>
+    <textarea name="comentarios_cliente" class="form-control"></textarea>
+
+    <button class="btn btn-primary mt-3">Guardar</button>
+</form>
+{% endblock %}
